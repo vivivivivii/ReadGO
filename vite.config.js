@@ -1,9 +1,13 @@
 import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { resolve, dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const rootDir = dirname(fileURLToPath(import.meta.url));
+const frontendDir = resolve(rootDir, 'frontend');
 
 export default defineConfig({
-  root: 'frontend',
-  publicDir: '../public',
+  root: frontendDir,
+  publicDir: resolve(rootDir, 'public'),
   server: {
     port: 5174,
     proxy: {
@@ -18,12 +22,12 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: '../dist',
+    outDir: resolve(rootDir, 'dist'),
     emptyOutDir: true,
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'frontend/index.html'),
-        app: resolve(__dirname, 'frontend/app.html'),
+        main: resolve(frontendDir, 'index.html'),
+        app: resolve(frontendDir, 'app.html'),
       },
     },
   },

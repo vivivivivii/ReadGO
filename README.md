@@ -78,6 +78,21 @@ npm start
 
 仓库已包含 `Dockerfile`，Render 可直接选 Docker 部署。
 
+### ⚠️ 不要用 Vercel 部署完整版
+
+Vercel 只能托管**静态网页**，无法运行本项目的 Express 后端与 SQLite 数据库。  
+在 Vercel 上即使构建成功，登录、书架、导书 GO 等 API 也会全部失败。
+
+**请改用 [Render](https://render.com)**（免费档可用）：
+
+1. [render.com](https://render.com) → New → **Web Service** → 连接 `vivivivivii/ReadGO`
+2. **Environment** 选 **Docker**
+3. 环境变量：`DEEPSEEK_API_KEY`、`JWT_SECRET`
+4. 添加 **Disk**：Mount Path = `/app/data`，1 GB
+5. 部署完成后打开 Render 提供的网址
+
+若你已在 Vercel 创建了项目，可在 Vercel 控制台 **删除该项目**，避免每次 push 都自动失败。
+
 ## 环境变量
 
 | 变量 | 说明 | 默认值 |
