@@ -57,6 +57,27 @@ npm run build
 npm start
 ```
 
+**推荐平台**：Render、Railway、Fly.io 等支持 **长期运行 Node 进程 + 磁盘持久化** 的服务。
+
+| 平台 | 是否适合 | 说明 |
+|------|----------|------|
+| Render / Railway / Docker | ✅ | 使用仓库内 `Dockerfile` 或 `render.yaml` |
+| Vercel / Netlify 静态托管 | ❌ | 本项目是 Express + SQLite，不适合 Serverless |
+
+**环境变量**（在平台控制台配置，不要提交 `.env`）：
+
+- `DEEPSEEK_API_KEY`（必填）
+- `JWT_SECRET`（必填，随机长字符串）
+- `PORT`（多数平台自动注入，无需手动设置）
+- `NODE_ENV=production`
+
+**构建命令**：`npm install && npm run build`  
+**启动命令**：`npm start`
+
+若日志里只有黄色的 `npm warn deprecated`，一般**不是失败原因**；真正常见问题是 `better-sqlite3` 原生模块编译失败——请使用 **Node 20** 并优先用 Docker 部署。
+
+仓库已包含 `Dockerfile`，Render 可直接选 Docker 部署。
+
 ## 环境变量
 
 | 变量 | 说明 | 默认值 |

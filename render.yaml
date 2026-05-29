@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: readgo
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+    disk:
+      name: readgo-data
+      mountPath: /app/data
+      sizeGB: 1
