@@ -1,0 +1,34 @@
+# 依赖
+node_modules/
+
+# 环境配置（含密钥，切勿提交）
+.env
+.env.local
+.env.*.local
+
+# 运行时数据
+data/
+uploads/
+dist/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# 日志与缓存
+logs/
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.vite/
+.tools/
+
+# 编辑器
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 系统
+desktop.ini
